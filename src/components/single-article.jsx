@@ -24,6 +24,7 @@ function SingleArticle() {
           <p>Author: {singleArticle.author}</p>
           <p>Topic: {singleArticle.topic}</p>
           <p>Created at: {singleArticle.created_at}</p>
+          <img src={singleArticle.article_img_url} alt={singleArticle.title} />
           <p>{singleArticle.body}</p>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
@@ -36,18 +37,6 @@ function SingleArticle() {
             pretium condimentum at ut magna. Suspendisse libero lacus, volutpat
             id consectetur sed, iaculis at lorem. Ut congue ultrices risus a
             viverra.
-          </p>
-          <p>
-            Nunc rhoncus elit neque, non accumsan lorem mattis non. Donec et
-            aliquet purus, vitae consequat turpis. Quisque ullamcorper, felis a
-            sagittis dignissim, lacus purus elementum massa, vel sagittis mauris
-            tortor sit amet tellus. Nunc facilisis nibh ut pulvinar commodo.
-            Vivamus pharetra dolor enim, vel commodo lorem dignissim et. Morbi
-            egestas rhoncus rutrum. Aenean placerat dapibus sem, at malesuada
-            arcu placerat eu. Curabitur finibus dui sit amet nisl iaculis, non
-            suscipit felis porttitor. Sed blandit libero facilisis, placerat est
-            at, laoreet odio. Aliquam erat volutpat. Nam nec dapibus velit.
-            Proin tempus lectus nec velit mollis varius.
           </p>
         </>
       )}
