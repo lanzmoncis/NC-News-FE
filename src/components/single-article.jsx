@@ -1,18 +1,15 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import getArticles from "../api";
+import { getSingleArticle } from "../api";
 
 function SingleArticle() {
   const [singleArticle, setSingleArticle] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   let { article_id } = useParams();
 
-  console.log(typeof article_id);
-
   useEffect(() => {
-    getArticles().then((data) => {
-      const article = data.find((id) => id.article_id === parseInt(article_id));
-      setSingleArticle(article);
+    getSingleArticle(article_id).then((data) => {
+      setSingleArticle(data);
       setIsLoading(false);
     });
   }, [article_id]);
@@ -26,6 +23,8 @@ function SingleArticle() {
           <h2>{singleArticle.title}</h2>
           <p>Author: {singleArticle.author}</p>
           <p>Topic: {singleArticle.topic}</p>
+          <p>Created at: {singleArticle.created_at}</p>
+          <p>{singleArticle.body}</p>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
             pharetra varius massa blandit mollis. Curabitur dignissim accumsan
@@ -49,22 +48,6 @@ function SingleArticle() {
             suscipit felis porttitor. Sed blandit libero facilisis, placerat est
             at, laoreet odio. Aliquam erat volutpat. Nam nec dapibus velit.
             Proin tempus lectus nec velit mollis varius.
-          </p>
-          <p>
-            Pellentesque vitae orci orci. Phasellus maximus ligula nec massa
-            facilisis convallis. Donec porttitor convallis diam, nec hendrerit
-            turpis convallis at. Suspendisse dictum, tellus nec vulputate
-            venenatis, odio elit vestibulum massa, eu tincidunt sem urna eu
-            ante. Nulla facilisi. Mauris tempus diam in lacus ultrices
-            pellentesque. Class aptent taciti sociosqu ad litora torquent per
-            conubia nostra, per inceptos himenaeos. Integer pharetra ligula ut
-            arcu pellentesque pretium. Mauris ac lacinia elit. Etiam eu egestas
-            erat, non porta nisi. Pellentesque sagittis enim vitae ultrices
-            bibendum. Duis non metus nulla. Pellentesque vitae sagittis ligula,
-            eu tincidunt purus. Quisque lectus libero, volutpat vitae enim
-            aliquam, sollicitudin ornare lorem. Vestibulum lacus velit,
-            facilisis vitae nisl vel, suscipit viverra est. Cras et est
-            venenatis, molestie diam id, maximus sem.{" "}
           </p>
         </>
       )}
