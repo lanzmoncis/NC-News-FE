@@ -16,3 +16,10 @@ export const getSingleArticle = (articleId) => {
     return data.articleById;
   });
 };
+
+export const getArticleComments = (articleId) => {
+  const parsedId = parseInt(articleId);
+  return articleApi.get(`/articles/${parsedId}/comments`).then(({ data }) => {
+    return data.commentsById;
+  });
+};

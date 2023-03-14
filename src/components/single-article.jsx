@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getSingleArticle } from "../api";
+import { getSingleArticle, getArticleComments } from "../api";
+import Comments from "./comments";
 
 function SingleArticle() {
   const [singleArticle, setSingleArticle] = useState([]);
+  const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   let { article_id } = useParams();
 
@@ -11,6 +13,9 @@ function SingleArticle() {
     getSingleArticle(article_id).then((data) => {
       setSingleArticle(data);
       setIsLoading(false);
+    });
+    getArticleComments(article_id).then((data) => {
+      setComments(data);
     });
   }, [article_id]);
 
@@ -24,6 +29,7 @@ function SingleArticle() {
           <p>Author: {singleArticle.author}</p>
           <p>Topic: {singleArticle.topic}</p>
           <p>Created at: {singleArticle.created_at}</p>
+          <img src={singleArticle.article_img_url} alt={singleArticle.title} />
           <p>{singleArticle.body}</p>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
@@ -37,18 +43,7 @@ function SingleArticle() {
             id consectetur sed, iaculis at lorem. Ut congue ultrices risus a
             viverra.
           </p>
-          <p>
-            Nunc rhoncus elit neque, non accumsan lorem mattis non. Donec et
-            aliquet purus, vitae consequat turpis. Quisque ullamcorper, felis a
-            sagittis dignissim, lacus purus elementum massa, vel sagittis mauris
-            tortor sit amet tellus. Nunc facilisis nibh ut pulvinar commodo.
-            Vivamus pharetra dolor enim, vel commodo lorem dignissim et. Morbi
-            egestas rhoncus rutrum. Aenean placerat dapibus sem, at malesuada
-            arcu placerat eu. Curabitur finibus dui sit amet nisl iaculis, non
-            suscipit felis porttitor. Sed blandit libero facilisis, placerat est
-            at, laoreet odio. Aliquam erat volutpat. Nam nec dapibus velit.
-            Proin tempus lectus nec velit mollis varius.
-          </p>
+          <Comments comments={comments} />
         </>
       )}
     </>
