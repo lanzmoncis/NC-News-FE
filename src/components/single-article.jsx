@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getSingleArticle, getArticleComments } from "../api";
+import { getSingleArticle, getArticleComments, patchArticleVote } from "../api";
 import Comments from "./comments";
 
 function SingleArticle() {
@@ -19,6 +19,18 @@ function SingleArticle() {
     });
   }, [article_id]);
 
+  const handleVote = () => {
+    setSingleArticle((currentArticle) => {
+      return { ...currentArticle, votes: currentArticle.votes + 1 };
+    });
+
+    patchArticleVote(singleArticle.article_id).catch(() => {
+      setSingleArticle((currentArticle) => {
+        return { ...currentArticle, votes: currentArticle.votes - 1 };
+      });
+    });
+  };
+
   return (
     <>
       {isLoading ? (
@@ -30,6 +42,8 @@ function SingleArticle() {
           <p>Topic: {singleArticle.topic}</p>
           <p>Created at: {singleArticle.created_at}</p>
           <img src={singleArticle.article_img_url} alt={singleArticle.title} />
+          <p>Votes: {singleArticle.votes}</p>
+          <button onClick={handleVote}>LIKE</button>
           <p>{singleArticle.body}</p>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
