@@ -4,11 +4,11 @@ function ArticleCard({ article }) {
   return (
     <li>
       <Link to={`/article/${article.article_id}`}>
-        <div>Title: {article.title}</div>
+        <h3>{article.title}</h3>
       </Link>
-      <div>Topic: {article.topic}</div>
-      <div>Author: {article.author}</div>
-      <div>Description: {article.body}</div>
+      <p>Topic: {article.topic}</p>
+      <p>Author: {article.author}</p>
+      <p>Description: {article.body}</p>
     </li>
   );
 }
