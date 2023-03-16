@@ -1,23 +1,33 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getSingleArticle, getArticleComments } from "../api";
+import { getSingleArticle, getArticleComments, patchArticleVote } from "../api";
 import Comments from "./comments";
 
 function SingleArticle() {
   const [singleArticle, setSingleArticle] = useState([]);
   const [comments, setComments] = useState([]);
+  const [votes, setVotes] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   let { article_id } = useParams();
 
   useEffect(() => {
     getSingleArticle(article_id).then((data) => {
       setSingleArticle(data);
+      setVotes(data.votes);
       setIsLoading(false);
     });
     getArticleComments(article_id).then((data) => {
       setComments(data);
     });
   }, [article_id]);
+
+  const handleVote = () => {
+    setVotes((currentVote) => currentVote + 1);
+
+    patchArticleVote(singleArticle.article_id).catch(() => {
+      setVotes((currentVote) => currentVote - 1);
+    });
+  };
 
   return (
     <>
@@ -30,6 +40,8 @@ function SingleArticle() {
           <p>Topic: {singleArticle.topic}</p>
           <p>Created at: {singleArticle.created_at}</p>
           <img src={singleArticle.article_img_url} alt={singleArticle.title} />
+          <p>Votes: {votes}</p>
+          <button onClick={handleVote}>LIKE</button>
           <p>{singleArticle.body}</p>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
