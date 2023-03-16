@@ -8,6 +8,7 @@ function Comments({ articleId }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitFail, setSubmitFail] = useState(false);
 
   useEffect(() => {
     getArticleComments(articleId).then((data) => {
@@ -24,12 +25,18 @@ function Comments({ articleId }) {
     event.preventDefault();
     setIsSubmitting(true);
 
-    addComment(articleId, newComment).then((data) => {
-      setComments([...comments, data]);
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setNewComment("");
-    });
+    addComment(articleId, newComment)
+      .then((data) => {
+        setComments([...comments, data]);
+        setIsSubmitting(false);
+        setSubmitSuccess(true);
+        setNewComment("");
+      })
+      .catch(() => {
+        setSubmitFail(true);
+        setSubmitSuccess(false);
+        setIsSubmitting(false);
+      });
   };
 
   return (
@@ -40,7 +47,13 @@ function Comments({ articleId }) {
         <>
           <ul>
             {comments.map((comment) => {
-              return <li key={comment.comment_id}>{comment.body}</li>;
+              return (
+                <li key={comment.comment_id}>
+                  <p>
+                    {comment.author}: {comment.body}
+                  </p>
+                </li>
+              );
             })}
           </ul>
           <form onSubmit={handleSubmit}>
@@ -52,6 +65,9 @@ function Comments({ articleId }) {
               {isSubmitting ? "Submitting..." : "Submit"}
             </button>
             {submitSuccess && <p>Your comment has been successfully posted!</p>}
+            {submitFail && (
+              <p>Your comment has not been posted! Please try again.</p>
+            )}
           </form>
         </>
       )}
