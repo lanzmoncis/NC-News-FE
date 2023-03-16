@@ -39,6 +39,10 @@ function Comments({ articleId }) {
       });
   };
 
+  const isCommentEmpty = () => {
+    return newComment.trim() === "";
+  };
+
   return (
     <>
       {isLoading ? (
@@ -61,7 +65,7 @@ function Comments({ articleId }) {
               Comment:
               <textarea value={newComment} onChange={handleChange} />
             </label>
-            <button type="submit" disabled={isSubmitting}>
+            <button type="submit" disabled={isSubmitting || isCommentEmpty()}>
               {isSubmitting ? "Submitting..." : "Submit"}
             </button>
             {submitSuccess && <p>Your comment has been successfully posted!</p>}
