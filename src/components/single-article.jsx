@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getSingleArticle, getArticleComments, patchArticleVote } from "../api";
+import { getSingleArticle, patchArticleVote } from "../api";
 import Comments from "./comments";
 
 function SingleArticle() {
   const [singleArticle, setSingleArticle] = useState([]);
-  const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   let { article_id } = useParams();
 
@@ -13,9 +12,6 @@ function SingleArticle() {
     getSingleArticle(article_id).then((data) => {
       setSingleArticle(data);
       setIsLoading(false);
-    });
-    getArticleComments(article_id).then((data) => {
-      setComments(data);
     });
   }, [article_id]);
 
@@ -57,7 +53,7 @@ function SingleArticle() {
             id consectetur sed, iaculis at lorem. Ut congue ultrices risus a
             viverra.
           </p>
-          <Comments comments={comments} />
+          <Comments articleId={article_id} />
         </>
       )}
     </>

@@ -25,3 +25,14 @@ export const getArticleComments = (articleId) => {
 export const patchArticleVote = (articleId) => {
   return articleApi.patch(`/articles/${articleId}`, { inc_votes: 1 });
 };
+
+export const addComment = (articleId, newComment) => {
+  return articleApi
+    .post(`/articles/${articleId}/comments`, {
+      body: newComment,
+      username: "grumpy19",
+    })
+    .then(({ data }) => {
+      return data.comment;
+    });
+};
