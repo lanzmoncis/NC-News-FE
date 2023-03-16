@@ -5,25 +5,23 @@ import Comments from "./comments";
 
 function SingleArticle() {
   const [singleArticle, setSingleArticle] = useState([]);
+  const [votes, setVotes] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   let { article_id } = useParams();
 
   useEffect(() => {
     getSingleArticle(article_id).then((data) => {
       setSingleArticle(data);
+      setVotes(data.votes);
       setIsLoading(false);
     });
   }, [article_id]);
 
   const handleVote = () => {
-    setSingleArticle((currentArticle) => {
-      return { ...currentArticle, votes: currentArticle.votes + 1 };
-    });
+    setVotes((currentVote) => currentVote + 1);
 
     patchArticleVote(singleArticle.article_id).catch(() => {
-      setSingleArticle((currentArticle) => {
-        return { ...currentArticle, votes: currentArticle.votes - 1 };
-      });
+      setVotes((currentVote) => currentVote - 1);
     });
   };
 
@@ -38,7 +36,7 @@ function SingleArticle() {
           <p>Topic: {singleArticle.topic}</p>
           <p>Created at: {singleArticle.created_at}</p>
           <img src={singleArticle.article_img_url} alt={singleArticle.title} />
-          <p>Votes: {singleArticle.votes}</p>
+          <p>Votes: {votes}</p>
           <button onClick={handleVote}>LIKE</button>
           <p>{singleArticle.body}</p>
           <p>
