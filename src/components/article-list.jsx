@@ -25,8 +25,8 @@ function ArticleList() {
   };
 
   return (
-    <div>
-      <h1>What's new</h1>
+    <div className={styles.container}>
+      <h2>What's new</h2>
       <select value={sortBy} onChange={handleSortChange}>
         <option value="created_at">Date</option>
         <option value="title">Title</option>

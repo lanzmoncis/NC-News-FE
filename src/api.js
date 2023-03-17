@@ -57,3 +57,7 @@ export const getArticlesByTopic = (topic, sort_by, order) => {
       return data.articles;
     });
 };
+
+export const deleteComment = (commentId) => {
+  return articleApi.delete(`/comments/${commentId}`);
+};
