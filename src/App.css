@@ -1,1 +1,37 @@
+.App {
+  width: 1200px;
+  margin: 0 auto;
+  font-family: sans-serif;
+}
 
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #f7f7f7;
+}
+
+.navbar {
+  list-style: none;
+}
+
+.navbar li {
+  display: inline;
+  margin: 0 10px;
+}
+
+h1 {
+  font-style: italic;
+  font-size: 26px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getArticlesByTopic } from "../api";
 import styles from "../styles/topics-page.module.css";
+import linkStyle from "../styles/link-style.module.css";
 
 function TopicPage() {
   const [articles, setArticles] = useState([]);
@@ -26,8 +27,8 @@ function TopicPage() {
   };
 
   return (
-    <div>
-      <h1>{topic.charAt(0).toUpperCase() + topic.slice(1)} Articles</h1>
+    <div className={styles.container}>
+      <h2>{topic.charAt(0).toUpperCase() + topic.slice(1)} Articles</h2>
       <select value={sortBy} onChange={handleSortChange}>
         <option value="created_at">Date</option>
         <option value="author">Author</option>
@@ -43,7 +44,10 @@ function TopicPage() {
         <ul className={styles.list}>
           {articles.map((article) => (
             <li key={article.article_id}>
-              <Link to={`/article/${article.article_id}`}>
+              <Link
+                to={`/article/${article.article_id}`}
+                className={linkStyle.link}
+              >
                 <h3>{article.title}</h3>
               </Link>
               <p>Author: {article.author}</p>

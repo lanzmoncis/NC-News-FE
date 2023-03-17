@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { getArticleComments } from "../api";
 import { addComment } from "../api";
+import { deleteComment } from "../api";
+import styles from "../styles/comments.module.css";
 
 function Comments({ articleId }) {
   const [comments, setComments] = useState([]);
@@ -9,6 +11,7 @@ function Comments({ articleId }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitFail, setSubmitFail] = useState(false);
+  const [deleteSuccess, setDeleteSuccess] = useState(false);
 
   useEffect(() => {
     getArticleComments(articleId).then((data) => {
@@ -39,6 +42,20 @@ function Comments({ articleId }) {
       });
   };
 
+  const handleDelete = (commentId) => {
+    deleteComment(commentId)
+      .then(() => {
+        const updatedComments = comments.filter(
+          (comment) => comment.comment_id !== commentId
+        );
+        setComments(updatedComments);
+        setDeleteSuccess(true);
+      })
+      .catch(() => {
+        setDeleteSuccess(false);
+      });
+  };
+
   const isCommentEmpty = () => {
     return newComment.trim() === "";
   };
@@ -56,11 +73,14 @@ function Comments({ articleId }) {
                   <p>
                     {comment.author}: {comment.body}
                   </p>
+                  <button onClick={() => handleDelete(comment.comment_id)}>
+                    Delete
+                  </button>
                 </li>
               );
             })}
           </ul>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className={styles.form}>
             <label>
               Comment:
               <textarea value={newComment} onChange={handleChange} />
@@ -72,6 +92,7 @@ function Comments({ articleId }) {
             {submitFail && (
               <p>Your comment has not been posted! Please try again.</p>
             )}
+            {deleteSuccess && <p>Your comment has been deleted!</p>}
           </form>
         </>
       )}

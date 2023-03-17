@@ -25,16 +25,30 @@ function SingleArticle() {
     });
   };
 
+  function formatDate(dateString) {
+    const dateObj = new Date(dateString);
+    return dateObj.toLocaleString("en-US", {
+      month: "long",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    });
+  }
+
   return (
     <>
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <>
+        <div>
           <h2>{singleArticle.title}</h2>
-          <p>Author: {singleArticle.author}</p>
-          <p>Topic: {singleArticle.topic}</p>
-          <p>Created at: {singleArticle.created_at}</p>
+          <p>
+            <em>
+              Posted by <strong>{singleArticle.author}</strong> on{" "}
+              {formatDate(singleArticle.created_at)}
+            </em>
+          </p>
           <img src={singleArticle.article_img_url} alt={singleArticle.title} />
           <p>Votes: {votes}</p>
           <button onClick={handleVote}>LIKE</button>
@@ -52,7 +66,7 @@ function SingleArticle() {
             viverra.
           </p>
           <Comments articleId={article_id} />
-        </>
+        </div>
       )}
     </>
   );
