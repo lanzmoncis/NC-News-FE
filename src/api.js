@@ -36,3 +36,15 @@ export const addComment = (articleId, newComment) => {
       return data.comment;
     });
 };
+
+export const getArticlesByTopic = (topic) => {
+  return articleApi
+    .get("/articles", {
+      params: {
+        topic,
+      },
+    })
+    .then(({ data }) => {
+      return data.articles;
+    });
+};
