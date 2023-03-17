@@ -4,10 +4,17 @@ const articleApi = axios.create({
   baseURL: "https://nc-backend.onrender.com/api",
 });
 
-export const getArticles = () => {
-  return articleApi.get("/articles").then(({ data }) => {
-    return data.articles;
-  });
+export const getArticles = (sort_by, order) => {
+  return articleApi
+    .get("/articles", {
+      params: {
+        sort_by,
+        order,
+      },
+    })
+    .then(({ data }) => {
+      return data.articles;
+    });
 };
 
 export const getSingleArticle = (articleId) => {
@@ -37,11 +44,13 @@ export const addComment = (articleId, newComment) => {
     });
 };
 
-export const getArticlesByTopic = (topic) => {
+export const getArticlesByTopic = (topic, sort_by, order) => {
   return articleApi
     .get("/articles", {
       params: {
         topic,
+        sort_by,
+        order,
       },
     })
     .then(({ data }) => {
