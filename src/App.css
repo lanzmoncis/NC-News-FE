@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px;
+  text-decoration: none;
 }
 
 .navbar {
@@ -23,6 +24,7 @@
 h1 {
   font-style: italic;
   font-size: 26px;
+  text-decoration: none;
 }
 
 h2 {

@@ -51,7 +51,9 @@ function SingleArticle() {
             </em>
           </p>
           <img src={singleArticle.article_img_url} alt={singleArticle.title} />
-          <p>Votes: {votes}</p>
+          <p>
+            <strong>Votes:</strong> {votes}
+          </p>
           <button onClick={handleVote}>LIKE</button>
           <p>{singleArticle.body}</p>
           <p>

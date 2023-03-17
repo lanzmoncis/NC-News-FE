@@ -12,6 +12,7 @@ function Comments({ articleId }) {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitFail, setSubmitFail] = useState(false);
   const [deleteSuccess, setDeleteSuccess] = useState(false);
+  const user = "grumpy19";
 
   useEffect(() => {
     getArticleComments(articleId).then((data) => {
@@ -42,18 +43,20 @@ function Comments({ articleId }) {
       });
   };
 
-  const handleDelete = (commentId) => {
-    deleteComment(commentId)
-      .then(() => {
-        const updatedComments = comments.filter(
-          (comment) => comment.comment_id !== commentId
-        );
-        setComments(updatedComments);
-        setDeleteSuccess(true);
-      })
-      .catch(() => {
-        setDeleteSuccess(false);
-      });
+  const handleDelete = (commentId, user) => {
+    if (comments.author === user) {
+      deleteComment(commentId)
+        .then(() => {
+          const updatedComments = comments.filter(
+            (comment) => comment.comment_id !== commentId
+          );
+          setComments(updatedComments);
+          setDeleteSuccess(true);
+        })
+        .catch(() => {
+          setDeleteSuccess(false);
+        });
+    }
   };
 
   const isCommentEmpty = () => {
@@ -71,11 +74,15 @@ function Comments({ articleId }) {
               return (
                 <li key={comment.comment_id}>
                   <p>
-                    {comment.author}: {comment.body}
+                    <strong>{comment.author}:</strong> {comment.body}
                   </p>
-                  <button onClick={() => handleDelete(comment.comment_id)}>
-                    Delete
-                  </button>
+                  {comment.author === user ? (
+                    <button
+                      onClick={() => handleDelete(comment.comment_id, user)}
+                    >
+                      Delete
+                    </button>
+                  ) : null}
                 </li>
               );
             })}
