@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleArticle, patchArticleVote } from "../api";
+import styles from "../styles/single-article.module.css";
 import Comments from "./comments";
 
 function SingleArticle() {
@@ -41,7 +42,7 @@ function SingleArticle() {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <div>
+        <div className={styles.container}>
           <h2>{singleArticle.title}</h2>
           <p>
             <em>
