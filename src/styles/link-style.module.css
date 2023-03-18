@@ -10,10 +10,8 @@
 }
 
 .userIcon {
-  border-radius: 50%; /* Create a circular shape */
-  width: 30px; /* Set the width and height to the same value to create a perfect circle */
+  border-radius: 50%;
+  width: 30px;
   height: 30px;
-  object-fit: cover; /* Maintain the aspect ratio of the image */
-  padding-top: 10px;
-  display: inline-block;
+  object-fit: cover;
 }
