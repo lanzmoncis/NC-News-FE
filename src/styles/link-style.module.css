@@ -1,11 +1,19 @@
 .link {
   text-decoration: none;
   color: #0000ee;
-  font-weight: bold;
 }
 
 .link:hover {
   text-decoration: underline;
   font-weight: bold;
   color: red;
+}
+
+.userIcon {
+  border-radius: 50%; /* Create a circular shape */
+  width: 30px; /* Set the width and height to the same value to create a perfect circle */
+  height: 30px;
+  object-fit: cover; /* Maintain the aspect ratio of the image */
+  padding-top: 10px;
+  display: inline-block;
 }

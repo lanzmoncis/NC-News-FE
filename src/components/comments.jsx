@@ -12,7 +12,7 @@ function Comments({ articleId }) {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitFail, setSubmitFail] = useState(false);
   const [deleteSuccess, setDeleteSuccess] = useState(false);
-  const user = "grumpy19";
+  const user = "tickle122";
 
   useEffect(() => {
     getArticleComments(articleId).then((data) => {
