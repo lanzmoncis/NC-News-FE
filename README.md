@@ -4,7 +4,7 @@
 
 ## Description
 
-Nc News is a simple full-stack web app developed as a project for the Northcoders bootcamp. It allows users to read and post comments on various topics like coding, cooking, and football. The app features a homepage displaying the most popular articles and a navigation menu for easy browsing. Users can also comment on articles and vote for their favourite posts.
+NC-News is a full-stack web app developed as a project for the Northcoders bootcamp. It allows users to read and post comments on various topics like coding, cooking, and football. The app features a homepage displaying the most popular articles and a navigation menu for easy browsing. Users can also comment on articles and vote for their favourite posts.
 
 ## Usage
 
