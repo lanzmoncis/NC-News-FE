@@ -21,7 +21,7 @@ Nc News is a simple full-stack web app developed as a project for the Northcoder
 1. Clone this repository using Git.
 2. Install Node.JS on your machine. you can refer to this doc for nodejs installation
    https://nodejs.org/en/download/package-manager#macos
-3. Navigate to the cloned repository on your local machine and open it with your preferred code editor (e.g., Visual Studio Code).
+3. Navigate the cloned repository on your local machine and open it with your preferred code editor (e.g., Visual Studio Code).
 4. Open the terminal in your code editor and install all the file's dependencies. you can install it using
 
 ```
