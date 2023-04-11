@@ -1,6 +1,6 @@
 # NC-News
 
-### Hosted Link: brilliant-sherbet-fe6c8a.netlify.app
+brilliant-sherbet-fe6c8a.netlify.app
 
 ## Description
 
