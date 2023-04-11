@@ -16,6 +16,8 @@ NC-News is a full-stack web app developed as a project for the Northcoders bootc
 
 • Click on an article to view its content, including comments and votes.
 
+• Delete a comment by clicking delete button from the user.
+
 ## Prerequisites
 
 1. Clone this repository using Git.
