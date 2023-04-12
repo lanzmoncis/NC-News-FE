@@ -18,7 +18,9 @@ NC-News is a full-stack web app developed as a project for the Northcoders bootc
 
 • Delete a comment by clicking delete button from the user.
 
-## Prerequisites
+## Getting started
+
+### Installation
 
 1. Clone this repository using Git.
 2. Install Node.JS on your machine. you can refer to this doc for nodejs installation
