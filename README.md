@@ -2,7 +2,7 @@
 
 ### Hosted Link: https://brilliant-sherbet-fe6c8a.netlify.app
 
-<img width="700" alt="Screenshot 2023-04-13 at 14 55 23" src="https://user-images.githubusercontent.com/103965235/231784095-fca0f2d3-7e50-4a11-9f33-32924429a135.png">
+<img width="100%" alt="Screenshot 2023-04-13 at 14 55 23" src="https://user-images.githubusercontent.com/103965235/231784095-fca0f2d3-7e50-4a11-9f33-32924429a135.png">
 
 
 ## Description
