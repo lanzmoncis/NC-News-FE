@@ -2,6 +2,9 @@
 
 ### Hosted Link: https://brilliant-sherbet-fe6c8a.netlify.app
 
+<img width="700" alt="Screenshot 2023-04-13 at 14 55 23" src="https://user-images.githubusercontent.com/103965235/231784095-fca0f2d3-7e50-4a11-9f33-32924429a135.png">
+
+
 ## Description
 
 NC-News is a full-stack web app developed as a project for the Northcoders bootcamp. It allows users to read and post comments on various topics like coding, cooking, and football. The app features a homepage displaying the most popular articles and a navigation menu for easy browsing. Users can also comment on articles and vote for their favourite posts.
