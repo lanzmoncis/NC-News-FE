@@ -1,57 +1,53 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getArticlesByTopic } from "../api";
-import styles from "../styles/topics-page.module.css";
-import linkStyle from "../styles/link-style.module.css";
+import { formatDate } from "../utils/date-formatter";
 
 function TopicPage() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [sortBy, setSortBy] = useState("created_at");
-  const [order, setOrder] = useState("desc");
   const { topic } = useParams();
 
   useEffect(() => {
-    getArticlesByTopic(topic, sortBy, order).then((data) => {
+    getArticlesByTopic(topic).then((data) => {
       setArticles(data);
       setIsLoading(false);
     });
-  }, [topic, sortBy, order]);
-
-  const handleSortChange = (event) => {
-    setSortBy(event.target.value);
-  };
-
-  const handleOrderChange = (event) => {
-    setOrder(event.target.value);
-  };
+  }, [topic]);
 
   return (
-    <div className={styles.container}>
-      <h2>{topic.charAt(0).toUpperCase() + topic.slice(1)} Articles</h2>
-      <select value={sortBy} onChange={handleSortChange}>
-        <option value="created_at">Date</option>
-        <option value="author">Author</option>
-        <option value="votes">Votes</option>
-      </select>
-      <select value={order} onChange={handleOrderChange}>
-        <option value="asc">Ascending</option>
-        <option value="desc">Descending</option>
-      </select>
+    <div>
+      <h2 className="mb-6 text-2xl font-bold">
+        {topic.charAt(0).toUpperCase() + topic.slice(1)} Articles
+      </h2>
       {isLoading ? (
-        <p>Loading...</p>
+        <p className="hidden">Loading...</p>
       ) : (
-        <ul className={styles.list}>
+        <ul className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-14">
           {articles.map((article) => (
             <li key={article.article_id}>
-              <Link
-                to={`/article/${article.article_id}`}
-                className={linkStyle.link}
-              >
-                <h3>{article.title}</h3>
-              </Link>
-              <p>Author: {article.author}</p>
-              <p>Description: {article.body}</p>
+              <div className="transition rounded-md hover:shadow-md">
+                <div className="size-auto">
+                  <img
+                    src={article.article_img_url}
+                    alt={article.title}
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+                <div className="p-4">
+                  <span className="text-xs font-light text-gray-500">
+                    {formatDate(article.created_at)}
+                  </span>
+                  <Link to={`/article/${article.article_id}`}>
+                    <h3 className="text-lg font-semibold text-gray-900">
+                      {article.title}
+                    </h3>
+                  </Link>
+                  <p className="mt-2 text-gray-500 text-sm/relaxed line-clamp-3">
+                    {article.body}
+                  </p>
+                </div>
+              </div>
             </li>
           ))}
         </ul>
