@@ -56,11 +56,11 @@ function ArticleList() {
                   className="object-cover w-full sm:size-52"
                 />
                 <div className="p-4">
-                  <span className="text-xs font-light text-gray-500">
+                  <span className="text-sm font-light text-gray-500 sm:text-xs">
                     {formatDate(articles[9].created_at)}
                   </span>
                   <Link to={`/article/${articles[9].article_id}`}>
-                    <h3 className="text-lg font-semibold text-gray-900 mt-0.5">
+                    <h3 className="text-xl sm:text-lg font-semibold text-gray-900 mt-0.5">
                       {articles[9].title}
                     </h3>
                   </Link>
@@ -68,7 +68,7 @@ function ArticleList() {
                     {articles[9].body}
                   </p>
                   <div>
-                    <span className="px-2 py-1 text-xs font-light text-gray-700 bg-yellow-100 rounded-md">
+                    <span className="px-2 py-1 text-sm font-light text-gray-700 bg-yellow-100 rounded-md sm:text-xs">
                       {articles[9].topic}
                     </span>
                   </div>
@@ -81,11 +81,11 @@ function ArticleList() {
                   className="object-cover w-full sm:size-52"
                 />
                 <div className="p-4">
-                  <span className="text-xs font-light text-gray-500">
+                  <span className="text-sm font-light text-gray-500 sm:text-xs">
                     {formatDate(articles[11].created_at)}
                   </span>
                   <Link to={`/article/${articles[11].article_id}`}>
-                    <h3 className="text-lg font-semibold text-gray-900">
+                    <h3 className="text-xl font-semibold text-gray-900 sm:text-lg">
                       {articles[11].title}
                     </h3>
                   </Link>
@@ -93,7 +93,7 @@ function ArticleList() {
                     {articles[11].body}
                   </p>
                   <div>
-                    <span className="px-2 py-1 text-xs font-light text-gray-700 bg-red-100 rounded-md">
+                    <span className="px-2 py-1 text-sm font-light text-gray-700 bg-red-100 rounded-md sm:text-xs">
                       {articles[11].topic}
                     </span>
                   </div>
@@ -102,7 +102,7 @@ function ArticleList() {
             </div>
           </div>
           <h2 className="mb-6 text-2xl font-bold">All article post</h2>
-          <ul className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-14">
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-8">
             {articles.map((article) => {
               return <ArticleCard key={article.article_id} article={article} />;
             })}

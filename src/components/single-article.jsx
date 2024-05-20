@@ -33,7 +33,7 @@ function SingleArticle() {
         <div className="space-y-2">
           <div className="mb-8">
             <div className="mb-4 text-center">
-              <h2 className="mb-2 text-2xl font-bold text-gray-900 md:text-4xl">
+              <h2 className="mb-2 text-3xl font-bold text-gray-900">
                 {singleArticle.title}
               </h2>
               <p className="mb-1 text-sm text-gray-500 md:text-base">
@@ -49,7 +49,7 @@ function SingleArticle() {
               className="mx-auto"
             />
           </div>
-          <div className="space-y-8 font-serif text-gray-900 text-base/loose md:text-lg/loose text-wrap">
+          <div className="space-y-8 font-serif text-gray-900 text-lg/loose text-wrap">
             <p>{singleArticle.body}</p>
 
             <p>
