@@ -1,6 +1,6 @@
 # <a href="https://ncnews-lanz.netlify.app" target="_blank">News.</a>
 
-<img width="100%" alt="Screenshot 2023-04-13 at 14 55 23" src="https://github.com/lanzmoncis/NC-News-FE/assets/103965235/e3486f21-164e-451c-b242-20272902dc5b">
+<img width="100%" alt="Screenshot 2023-04-13 at 14 55 23" src="https://github.com/lanzmoncis/news-fe/assets/103965235/df9b7cfd-c260-4176-9172-a650a27112ce">
 
 
 
